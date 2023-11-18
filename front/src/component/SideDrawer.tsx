@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import {ProjectModel} from "./project/Project.model";
 
-const SidePanel = () => {
+interface SidePanelProps {
+    openNewProjectPanel: () => void;
+}
+const SideDrawer = ({ openNewProjectPanel }: SidePanelProps) => {
     const [projects, setProjects] = useState<Array<ProjectModel>>([]);
 
     const handleNewProject = () => {
-        // Logic to add a new project
-        // This could involve opening a modal or a form to enter project details
+        openNewProjectPanel();
     };
 
     return (
@@ -23,4 +25,4 @@ const SidePanel = () => {
     );
 };
 
-export default SidePanel;
+export default SideDrawer;
