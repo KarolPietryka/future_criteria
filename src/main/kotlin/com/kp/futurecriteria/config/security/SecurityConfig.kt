@@ -41,7 +41,7 @@ class SecurityConfig {
             }
             .formLogin { formLogin -> formLogin
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/homepage.html", true)
+                .defaultSuccessUrl("/redirectAfterLogin", true)
                 .failureUrl("/login.html?error=true")}
             .logout { logout -> logout
                     .logoutUrl("/perform_logout")
