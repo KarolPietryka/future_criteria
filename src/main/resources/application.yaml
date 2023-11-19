@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: @project.artifactId@
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+  datasource:
+    username: fc
+    password: changeit
+    url: jdbc:postgresql://localhost:5432/fc
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          datasource=DEBUG: DEBUG
