@@ -6,9 +6,15 @@ spring:
       ddl-auto: update
     database: postgresql
   datasource:
-    username: fc
-    password: changeit
-    url: jdbc:postgresql://localhost:5432/fc
+    username: ${app.username}
+    password: ${app.password}
+    url: ${app.url}
+  liquibase:
+    change-log: classpath:/db/changelog-master.xml
+    enabled: true
+    user: ${app.username}
+    password: ${app.password}
+    url: ${app.url}
 
 logging:
   level:
@@ -16,3 +22,10 @@ logging:
       springframework:
         jdbc:
           datasource=DEBUG: DEBUG
+
+
+app:
+  # DB Properties
+  url: jdbc:postgresql://localhost:5432/fc
+  username: fc
+  password: changeit
