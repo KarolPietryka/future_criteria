@@ -12,23 +12,13 @@ const NewProjectPanel = ({closeNewProjectPanel}: NewProjectPanelProps) => {
     }
 
     return (
-        <div style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: '#e88989',
-            padding: '20px',
-            zIndex: 1000
-        }}>
-            <div>
-                <h1>New Project</h1>
-                <input type="text" value={projectName} onChange={e => setProjectName(e.target.value)}/>
-                <br/>
-                <textarea value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
-                <br/>
-                <button onClick={handleSave}>Save</button>
-            </div>
+        <div className={'overlay-panel'}>
+            <h1>New Project</h1>
+            <input type="text" value={projectName} onChange={e => setProjectName(e.target.value)}/>
+            <br/>
+            <textarea value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
+            <br/>
+            <button onClick={handleSave}>Save</button>
         </div>
     )
 }

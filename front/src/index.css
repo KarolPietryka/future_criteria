@@ -17,3 +17,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.blur-background {
+  filter: blur(2px);
+}
+
+.overlay-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(205, 208, 220, 0.8);
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 10px;
+}
