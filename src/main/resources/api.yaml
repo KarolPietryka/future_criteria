@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  title: Project API
+  version: 1.0.0
+  description: API for managing projects
+paths:
+  /projects:
+    get:
+      tags:
+        - Projects
+      summary: Get all projects
+      description: Retrieve a list of all projects
+      responses:
+        '200':
+          description: A list of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectDto'
+    put:
+      tags:
+        - Projects
+      summary: Create a new project
+      requestBody:
+        description: The project to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDto'
+      responses:
+        '201':
+          description: The created project
+  /projects/{id}:
+    get:
+      tags:
+        - Projects
+      summary: Get a project by id
+      description: Retrieve a project by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The project id
+      responses:
+        '200':
+          description: A project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDto'
+components:
+  schemas:
+    ProjectDto:
+      type: object
+      properties:
+        description:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+            type: string
+            format: date
+        isPrivate:
+            type: boolean
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskDto'
+    TaskDto:
+      type: object
+      properties:
+        taskName:
+          type: string
+        taskDescription:
+          type: string
+        project:
+          $ref: '#/components/schemas/ProjectDto'
+        status:
+          type: string
+
+
+
