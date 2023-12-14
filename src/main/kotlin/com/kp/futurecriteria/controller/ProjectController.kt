@@ -6,14 +6,12 @@ import com.kp.futurecriteria.model.ProjectDto
 import com.kp.futurecriteria.service.project.ProjectService
 import com.kp.futurecriteria.utility.ConstUtility.API_PROJECTS
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
 
 
-@Controller
-@RequestMapping(API_PROJECTS)
+@RestController
 class ProjectController(
     val projectService: ProjectService
 ) : ProjectsApi {
