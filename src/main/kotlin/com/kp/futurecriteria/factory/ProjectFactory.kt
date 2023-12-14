@@ -5,6 +5,7 @@ import java.time.LocalDateTime
 
 class ProjectFactory {
     fun createSampleProject() = Project(
+        id = null,
         name = "Sample Project",
         description = "This is a sample project",
         startDate = LocalDateTime.of(2023,1,1,0,0,0),

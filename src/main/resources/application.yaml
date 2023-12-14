@@ -22,6 +22,7 @@ logging:
       springframework:
         jdbc:
           datasource=DEBUG: DEBUG
+        web: DEBUG
 
 
 app:

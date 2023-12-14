@@ -9,23 +9,23 @@ data class Project (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: Long?,
 
     @Column(nullable = false)
-    val name: String,
+    val name: String?,
 
     @Column(length = 500)
-    val description: String,
+    val description: String?,
 
     @Column(name = "start_date")
-    val startDate: LocalDateTime,
+    val startDate: LocalDateTime?,
 
     @Column(name = "end_date")
-    val endDate: LocalDateTime,
+    val endDate: LocalDateTime?,
 
     @Column(name = "private")
     val isPrivate: Boolean,
 
     @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val tasks: Set<Task> = HashSet(),
+    val tasks: Set<Task>? = HashSet(),
 )
