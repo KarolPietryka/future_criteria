@@ -32,8 +32,8 @@ paths:
               $ref: '#/components/schemas/SaveProjectReq'
             example: {
               "description": "Project 1",
-              "startDate": "2020-01-01",
-              "endDate": "2020-01-01",
+              "startDate": "2020-01-01T00:00:00.000Z",
+              "endDate": "2020-01-01T00:00:00.000Z",
               "isPrivate": true,
               "tasks": [
                 {
@@ -77,10 +77,10 @@ components:
           type: string
         startDate:
           type: string
-          format: date
+          format: datetime
         endDate:
             type: string
-            format: date
+            format: datetime
         isPrivate:
             type: boolean
         tasks:
