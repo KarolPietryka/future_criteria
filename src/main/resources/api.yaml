@@ -57,6 +57,7 @@ paths:
           name: id
           schema:
             type: integer
+            format: int64
           required: true
           description: The project id
       responses:
@@ -65,9 +66,46 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SaveProjectReq'
+                $ref: '#/components/schemas/ProjectDto'
 components:
   schemas:
+    ProjectDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        startDate:
+          type: string
+          format: datetime
+        endDate:
+            type: string
+            format: datetime
+        isPrivate:
+            type: boolean
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskDto'
+    TaskDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        taskName:
+          type: string
+        taskDescription:
+          type: string
+        project:
+          type: integer
+          format: int64
+        status:
+          type: string
     SaveProjectReq:
       type: object
       properties:

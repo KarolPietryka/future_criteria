@@ -27,5 +27,5 @@ data class Project (
     val isPrivate: Boolean,
 
     @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val tasks: Set<Task>? = HashSet(),
+    val tasks: List<Task>? = emptyList()
 )

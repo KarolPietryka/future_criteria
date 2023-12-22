@@ -4,6 +4,7 @@ import com.kp.futurecriteria.data.Project
 import com.kp.futurecriteria.data.Task
 import com.kp.futurecriteria.mapper.context.TaskToEntityContext
 import com.kp.futurecriteria.model.NestedTaskDto
+import com.kp.futurecriteria.model.TaskDto
 import org.mapstruct.Context
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
@@ -20,5 +21,10 @@ interface TaskMapper {
         fun mapProject(taskDto: NestedTaskDto, @Context toEntityCtx: TaskToEntityContext): Project {
             return toEntityCtx.project
         }
+        @JvmStatic
+        @Named("projectToDto")
+        fun projectToDto(project: Project): Long = project.id!!
     }
+    @Mapping(source = "project", target = "project", qualifiedByName = ["projectToDto"])
+    fun toDto(task: Task): TaskDto
 }

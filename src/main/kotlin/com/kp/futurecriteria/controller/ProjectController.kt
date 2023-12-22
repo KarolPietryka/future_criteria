@@ -2,6 +2,7 @@ package com.kp.futurecriteria.controller
 
 
 import com.kp.futurecriteria.api.ProjectsApi
+import com.kp.futurecriteria.model.ProjectDto
 import com.kp.futurecriteria.model.SaveProjectReq
 import com.kp.futurecriteria.service.project.ProjectService
 import com.kp.futurecriteria.utility.ConstUtility.API_PROJECTS
@@ -9,6 +10,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
+import javax.validation.Valid
+import javax.validation.constraints.NotNull
 
 
 @RestController
@@ -16,9 +19,9 @@ class ProjectController(
     val projectService: ProjectService
 ) : ProjectsApi {
 
-//    override fun projectsGet(): ResponseEntity<MutableList<ProjectDto>> {
-//        return ResponseEntity.ok(listOf(ProjectFactory().createSampleProject()))
-//    }
+    override fun projectsIdGet(@NotNull @Valid id: Long?): ResponseEntity<ProjectDto> {
+        return ResponseEntity.ok(projectService.get(id!!))
+    }
 
     override fun projectsPut(saveProjectReq: SaveProjectReq): ResponseEntity<Void> {
         val savedProject = projectService.save(saveProjectReq)

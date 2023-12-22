@@ -23,5 +23,8 @@ class ProjectService (
         saveProjectReq.tasks.map{taskMapper.toEntity(it, ctx)}.apply(taskRepository::saveAll)
         return project
     }
+    fun get(projectId: Long) =
+        projectRepository.getReferenceById(projectId).let(projectMapper::toDto)
+
 
 }
