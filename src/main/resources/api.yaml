@@ -67,6 +67,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectDto'
+  /projects/filter:
+    get:
+      tags:
+        - Projects
+      summary: Filter projects
+      requestBody:
+        description: The project properties to filter by
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDto'
+      responses:
+        '200':
+          description: The filtered projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectDto'
 components:
   schemas:
     ProjectDto:

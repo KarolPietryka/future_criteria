@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
-import javax.validation.Valid
-import javax.validation.constraints.NotNull
 
 
 @RestController
@@ -19,7 +17,7 @@ class ProjectController(
     val projectService: ProjectService
 ) : ProjectsApi {
 
-    override fun projectsIdGet(@NotNull @Valid id: Long?): ResponseEntity<ProjectDto> {
+    override fun projectsIdGet(id: Long): ResponseEntity<ProjectDto> {
         return ResponseEntity.ok(projectService.get(id!!))
     }
 
@@ -31,6 +29,10 @@ class ProjectController(
             .toUri()
 
         return ResponseEntity.created(location).build()
+    }
+
+    override fun projectsFilterGet(projectDto: ProjectDto): ResponseEntity<MutableList<ProjectDto>> {
+        return ResponseEntity.ok(projectService.getFiltered(projectDto))
     }
 }
 
