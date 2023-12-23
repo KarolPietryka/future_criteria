@@ -8,8 +8,8 @@ import com.kp.futurecriteria.model.ProjectDto
 import com.kp.futurecriteria.model.SaveProjectReq
 import com.kp.futurecriteria.repository.ProjectRepository
 import com.kp.futurecriteria.repository.TaskRepository
-import jakarta.persistence.EntityManager
-import jakarta.persistence.PersistenceContext
+import org.apache.commons.text.CaseUtils
+import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
 import kotlin.reflect.full.memberFunctions
 
@@ -19,8 +19,6 @@ class ProjectService (
     val taskRepository: TaskRepository,
     val projectMapper: ProjectMapper,
     val taskMapper: TaskMapper,
-    @PersistenceContext
-    val entityManager: EntityManager
 ){
     fun save(saveProjectReq: SaveProjectReq): Project {
         val project = projectMapper.toEntity(saveProjectReq)
@@ -34,23 +32,18 @@ class ProjectService (
 
 
     fun getFiltered(project: ProjectDto): MutableList<ProjectDto>{
-        val criteriaBuilder = entityManager.criteriaBuilder
-        val query = criteriaBuilder.createQuery(Project::class.java)
-        val root = query.from(Project::class.java)
+        val spec: Specification<Project> = Specification { root, _, criteriaBuilder ->
+            val serializedProjectDto = ProjectDto::class.memberFunctions.filter { func ->
+                func.name.startsWith("get") && func.parameters.size == 1
+            }.associateBy({CaseUtils.toCamelCase(it.name.removePrefix("get"), false)}, {it.call(project)})
+            .filter { it.value != null }
 
-        val serializedProjectDto = ProjectDto::class.memberFunctions.filter { func ->
-            func.name.startsWith("get") && func.parameters.size == 1
-        }.associateBy({it.name.removePrefix("get")}, {it.call(project)})
-        .filter { it.value != null }
+            val predicates = serializedProjectDto.map { (propertyName, value) ->
+                criteriaBuilder.equal(root.get<Any>(propertyName), value)
+            }
 
-        val predicates = serializedProjectDto.map { (propertyName, value) ->
-            criteriaBuilder.equal(root.get<Any>(propertyName), value)
+            criteriaBuilder.and(*predicates.toTypedArray())
         }
-
-        if (predicates.isNotEmpty()) {
-            query.where(criteriaBuilder.and(*predicates.toTypedArray()))
-        }
-
-        return entityManager.createQuery(query).resultList.map(projectMapper::toDto).toMutableList()
+        return projectRepository.findAll(spec).map(projectMapper::toDto).toMutableList()
     }
 }
