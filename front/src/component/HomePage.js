@@ -1,6 +1,6 @@
 import SideDrawer from "./SideDrawer";
 import React, {useState} from "react";
-import NewProjectPanel from "./project/NewProjectPanel";
+import NewProjectPanel from "./project/new/NewProjectPanel";
 import './HomePage.css';
 
 const HomePage = () => {
