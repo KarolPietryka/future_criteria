@@ -13,6 +13,7 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
     const [endDate, setEndDate] = useState(new Date())
     const [isPrivate, setIsPrivate] = useState(false);
 
+    const toggleIsPrivate = () => {setIsPrivate(!isPrivate);}
     return (
         <>
             Project Name:
@@ -52,6 +53,7 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
                 <input
                     type="checkbox"
                     checked={isPrivate}
+                    onClick={toggleIsPrivate}
                 />
             </div>
             <br/>
