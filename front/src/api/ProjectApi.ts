@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const ProjectApi = createApi({
     reducerPath: 'projectApi', // Unique key for the Redux store
-    baseQuery: fetchBaseQuery({ baseUrl: '/api' }), // Replace '/api' with your actual base URL
+    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8080', credentials: "include"}), // Replace '/api' with your actual base URL
     endpoints: (builder) => ({
         getAllProjects: builder.query({
             query: () => '/projects',

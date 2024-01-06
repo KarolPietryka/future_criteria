@@ -2,6 +2,7 @@ package com.kp.futurecriteria.config.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.core.userdetails.User
@@ -35,6 +36,7 @@ class SecurityConfig {
     fun filterChain(http: HttpSecurity): SecurityFilterChain =
         http.csrf { csrf -> csrf.disable() }
             .authorizeRequests{auth -> auth
+                    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Permit all OPTIONS requests
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     .requestMatchers("/login*").permitAll()
                     .anyRequest().authenticated()
