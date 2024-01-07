@@ -19,9 +19,14 @@ spring:
     user: ${app.username}
     password: ${app.password}
     url: ${app.url}
-
+    
+server:
+  servlet:
+    session:
+      timeout: 30m
 logging:
   level:
+    org.springframework.security: DEBUG
     org.springframework.web: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org:
@@ -34,8 +39,6 @@ logging:
           descriptor:
             type: TRACE  # Logs the SQL bind parameters
             SQL: DEBUG   # Logs the SQL statements
-
-
 app:
   # DB Properties
   url: jdbc:postgresql://localhost:5432/fc

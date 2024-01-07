@@ -136,10 +136,10 @@ components:
           type: string
         startDate:
           type: string
-          format: datetime
+          format: date-time
         endDate:
             type: string
-            format: datetime
+            format: date-time
         isPrivate:
             type: boolean
         tasks:

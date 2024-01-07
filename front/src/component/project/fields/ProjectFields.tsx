@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState} from "react";
+import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {ProjectModel} from "../Project.model";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,6 +14,17 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
     const [isPrivate, setIsPrivate] = useState(false);
 
     const toggleIsPrivate = () => {setIsPrivate(!isPrivate);}
+    useEffect(() => {
+        projectFieldsProps.setProject({
+            name: projectName,
+            description: projectDescription,
+            startDate: startDate,
+            endDate: endDate,
+            isPrivate: isPrivate,
+            tasks: []
+        });
+    }, [projectName, projectDescription, startDate, endDate, isPrivate]);
+
     return (
         <>
             Project Name:
