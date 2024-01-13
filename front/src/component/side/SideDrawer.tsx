@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {ProjectModel} from "./project/Project.model";
+import {ProjectModel} from "../project/Project.model";
 
 interface SidePanelProps {
     openNewProjectPanel: () => void;

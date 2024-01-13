@@ -1,4 +1,4 @@
-import SideDrawer from "./SideDrawer";
+import SideDrawer from "./side/SideDrawer";
 import React, {useState} from "react";
 import NewProjectPanel from "./project/new/NewProjectPanel";
 import './HomePage.css';
