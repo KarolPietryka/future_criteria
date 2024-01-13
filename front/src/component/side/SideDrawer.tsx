@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {ProjectModel} from "../project/Project.model";
 import "./SideComponent.scss"
-import SideFilter from "./SideFilter";
+import SideProjectFilter from "./SideProjectFilter";
 
 interface SidePanelProps {
     openNewProjectPanel: () => void;
@@ -14,8 +14,8 @@ const SideDrawer = ({ openNewProjectPanel }: SidePanelProps) => {
     };
 
     return (
-        <aside style={{ width: '250px', backgroundColor: '#f0f0f0', padding: '10px' }}>
-            <SideFilter/>
+        <aside style={{ width: '250px', backgroundColor: '#f0f0f0', padding: '10px', display: "table"}}>
+            <SideProjectFilter/>
             <button onClick={handleNewProject}>
                 New Project
             </button>
