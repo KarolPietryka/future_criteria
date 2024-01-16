@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import "./ProjectFields.scss"
 interface ProjectFieldsProps {
-    setProject: Dispatch<SetStateAction<ProjectModel>>
+    setProject: Dispatch<SetStateAction<ProjectModel | undefined>>
 }
 const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
     const [projectName, setProjectName] = useState<string>('')
@@ -18,8 +18,8 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
         projectFieldsProps.setProject({
             name: projectName,
             description: projectDescription,
-            startDate: startDate,
-            endDate: endDate,
+            startDate: startDate.toISOString(),
+            endDate: endDate.toISOString(),
             isPrivate: isPrivate,
             tasks: []
         });

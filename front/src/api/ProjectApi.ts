@@ -18,10 +18,10 @@ export const ProjectApi = createApi({
             query: (id) => `/projects/${id}`,
         }),
         filterProjects: builder.query({
-            query: (filter) => ({
+            query: (project) => ({
                 url: '/projects/filter',
                 method: 'POST',
-                body: filter,
+                body: project,
             }),
         }),
     }),

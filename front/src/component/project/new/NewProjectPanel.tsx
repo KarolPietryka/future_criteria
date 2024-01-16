@@ -10,12 +10,12 @@ interface NewProjectPanelProps {
     closeNewProjectPanel: () => void;
 }
 const NewProjectPanel = ({closeNewProjectPanel}: NewProjectPanelProps) => {
-    const [newProject, setNewProject] = useState({})
-    const [createProject, {error }] = useCreateProjectMutation();
+    const [newProject, setNewProject] = useState<ProjectModel | undefined>(undefined)
+    const [createProject, {error }] =
+        useCreateProjectMutation();
     const [showSaveProjectError, setShowSaveProjectError] = useState(false);
 
     const handleSave = () => {
-        console.log("Test")
         createProject(newProject).unwrap()
             .then(() => {
                 closeNewProjectPanel();
