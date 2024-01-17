@@ -31,7 +31,7 @@ class ProjectController(
         return ResponseEntity.created(location).build()
     }
 
-    override fun projectsFilterGet(projectDto: ProjectDto): ResponseEntity<MutableList<ProjectDto>> {
+    override fun projectsFilterPost(projectDto: ProjectDto): ResponseEntity<MutableList<ProjectDto>> {
         return ResponseEntity.ok(projectService.getFiltered(projectDto))
     }
 }

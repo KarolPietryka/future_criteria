@@ -68,7 +68,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProjectDto'
   /projects/filter:
-    get:
+    post:
       tags:
         - Projects
       summary: Filter projects
