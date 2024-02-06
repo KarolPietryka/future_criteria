@@ -23,6 +23,7 @@ export const ProjectApi = createApi({
                 method: 'POST',
                 body: project,
             }),
+            keepUnusedDataFor: 0
         }),
     }),
 });

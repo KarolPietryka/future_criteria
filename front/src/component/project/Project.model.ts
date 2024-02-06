@@ -4,5 +4,5 @@ export interface ProjectModel{
     startDate: string;
     endDate: string;
     isPrivate: boolean;
-    tasks: object;
+    tasks: object | null;
 }

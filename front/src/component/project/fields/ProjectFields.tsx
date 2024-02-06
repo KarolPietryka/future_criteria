@@ -3,6 +3,7 @@ import {ProjectModel} from "../Project.model";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import "./ProjectFields.scss"
+import {toJavaLocalDataTime} from "../../../utils/DataUtils";
 interface ProjectFieldsProps {
     setProject: Dispatch<SetStateAction<ProjectModel | undefined>>
 }
@@ -18,10 +19,10 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
         projectFieldsProps.setProject({
             name: projectName,
             description: projectDescription,
-            startDate: startDate.toISOString(),
-            endDate: endDate.toISOString(),
+            startDate: toJavaLocalDataTime(startDate),
+            endDate: toJavaLocalDataTime(endDate),
             isPrivate: isPrivate,
-            tasks: []
+            tasks: null
         });
     }, [projectName, projectDescription, startDate, endDate, isPrivate]);
 

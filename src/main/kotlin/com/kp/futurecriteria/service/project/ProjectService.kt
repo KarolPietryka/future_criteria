@@ -8,10 +8,9 @@ import com.kp.futurecriteria.model.ProjectDto
 import com.kp.futurecriteria.model.SaveProjectReq
 import com.kp.futurecriteria.repository.ProjectRepository
 import com.kp.futurecriteria.repository.TaskRepository
-import org.apache.commons.text.CaseUtils
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
-import kotlin.reflect.full.memberFunctions
+import kotlin.reflect.full.memberProperties
 
 @Service
 class ProjectService (
@@ -33,9 +32,9 @@ class ProjectService (
 
     fun getFiltered(project: ProjectDto): MutableList<ProjectDto>{
         val spec: Specification<Project> = Specification { root, _, criteriaBuilder ->
-            val serializedProjectDto = ProjectDto::class.memberFunctions.filter { func ->
-                func.name.startsWith("get") && func.parameters.size == 1
-            }.associateBy({CaseUtils.toCamelCase(it.name.removePrefix("get"), false)}, {it.call(project)})
+            val projectModel = projectMapper.toEntity(project)
+            val serializedProjectDto = Project::class.memberProperties
+                .associateBy({ it.name }, {it.call(projectModel)})
             .filter { it.value != null }
 
             val predicates = serializedProjectDto.map { (propertyName, value) ->

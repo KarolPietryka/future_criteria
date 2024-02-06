@@ -93,9 +93,6 @@ components:
     ProjectDto:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
         name:
           type: string
         description:
@@ -108,16 +105,9 @@ components:
             format: datetime
         isPrivate:
             type: boolean
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskDto'
     TaskDto:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
         taskName:
           type: string
         taskDescription:
@@ -128,35 +118,15 @@ components:
         status:
           type: string
     SaveProjectReq:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        startDate:
-          type: string
-          format: date-time
-        endDate:
-            type: string
-            format: date-time
-        isPrivate:
-            type: boolean
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTaskDto'
-    NestedTaskDto:
-      type: object
-      properties:
-        taskName:
-          type: string
-        taskDescription:
-          type: string
-        project:
-          type: number
-        status:
-          type: string
+      allOf:
+        - $ref: '#/components/schemas/ProjectDto'
+        - type: object
+          properties:
+            tasks:
+              type: array
+              items:
+                $ref: '#/components/schemas/TaskDto'
+
 
 
 
