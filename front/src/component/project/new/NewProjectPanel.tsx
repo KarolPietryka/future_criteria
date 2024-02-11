@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react";
 import {ProjectModel} from "../Project.model";
-import ProjectFields from "../fields/ProjectFields";
+import ProjectFields from "../ProjectFields";
 import {useCreateProjectMutation} from "../../../api/ProjectApi";
 import { Modal } from 'antd';
 

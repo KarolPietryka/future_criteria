@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./SideComponent.scss"
-import ProjectFields from "../project/fields/ProjectFields";
+import ProjectFields from "../project/ProjectFields";
 import {useFilterProjectsQuery} from "../../api/ProjectApi";
 import {ProjectModel} from "../project/Project.model";
 
