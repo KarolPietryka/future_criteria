@@ -32,7 +32,9 @@ const NewProjectPanel = ({closeNewProjectPanel}: NewProjectPanelProps) => {
     return (
         <div className={'overlay-panel'}>
             <h1>New Project</h1>
-            <ProjectFields setProject={setNewProject}></ProjectFields>
+            <ProjectFields
+                setProject={setNewProject}
+                filterMode={false}/>
             <button onClick={handleSave}>Save</button>
             {showSaveProjectError && (
                 <Modal

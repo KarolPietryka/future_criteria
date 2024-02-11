@@ -27,14 +27,13 @@ const NoEquationFields = (props: NoEquationFieldsProps) => {
          <textarea className="description" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
          <br/>
          <div>
-             <span>Is private:</span>
+             <span>Is Private:</span>
              <input
                  type="checkbox"
                  checked={isPrivate}
                  onClick={toggleIsPrivate}
              />
          </div>
-         <br/>
      </>
 
   );

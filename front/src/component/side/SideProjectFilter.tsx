@@ -29,7 +29,10 @@ const SideProjectFilter = () => {
             </button>
             {filterFieldsEnabled &&
             <div>
-                <ProjectFields setProject={setFilterProject}/>
+                <ProjectFields
+                    setProject={setFilterProject}
+                    filterMode={true}
+                />
                 <button onClick={getProject}>
                     Search
                 </button>

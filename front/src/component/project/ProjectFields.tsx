@@ -5,8 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./ProjectFields.scss"
 import {toJavaLocalDataTime} from "../../utils/DataUtils";
 import NoEquationFields from "./fields/NoEquationFields";
+import EquationFields from "./fields/EquationFields";
 interface ProjectFieldsProps {
     setProject: Dispatch<SetStateAction<ProjectModel | undefined>>
+    filterMode: boolean
 }
 const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
     const [projectName, setProjectName] = useState<string>('')
@@ -32,26 +34,10 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
                 setProjectName={setProjectName}
                 setProjectDescription={setProjectDescription}
                 setIsPrivate={setIsPrivate}/>
-            <DatePicker className="dataPicker"
-                selected={startDate}
-                onChange={(date) => setStartDate(date || new Date())}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                timeCaption="time"
-                dateFormat="MMMM d, yyyy h:mm aa"
-            />
-            <br/>
-            End Date:
-            <br/>
-            <DatePicker className="dataPicker"
-                selected={endDate}
-                onChange={(date) => setEndDate(date || new Date())}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                timeCaption="time"
-                dateFormat="MMMM d, yyyy h:mm aa"
+            <EquationFields
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+                filterMode={projectFieldsProps.filterMode}
             />
             <br/>
         </>
