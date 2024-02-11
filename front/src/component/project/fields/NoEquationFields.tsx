@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 
-interface ContainFieldsProps {
+interface NoEquationFieldsProps {
     setProjectName: (projectName: string) => void;
     setProjectDescription: (projectDescription: string) => void;
     setIsPrivate: (isPrivate: boolean) => void;
 }
-const ContainFields = (props: ContainFieldsProps) => {
+const NoEquationFields = (props: NoEquationFieldsProps) => {
     const [projectName, setProjectName] = useState<string>('')
     const [projectDescription, setProjectDescription] = useState<string>('')
     const [isPrivate, setIsPrivate] = useState(false);
@@ -39,4 +39,4 @@ const ContainFields = (props: ContainFieldsProps) => {
 
   );
 };
-export default ContainFields;
+export default NoEquationFields;

@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import "./ProjectFields.scss"
 import {toJavaLocalDataTime} from "../../utils/DataUtils";
-import ContainFields from "./fields/ContainFields";
+import NoEquationFields from "./fields/NoEquationFields";
 interface ProjectFieldsProps {
     setProject: Dispatch<SetStateAction<ProjectModel | undefined>>
 }
@@ -28,7 +28,7 @@ const ProjectFields = (projectFieldsProps: ProjectFieldsProps) => {
 
     return (
         <>
-            <ContainFields
+            <NoEquationFields
                 setProjectName={setProjectName}
                 setProjectDescription={setProjectDescription}
                 setIsPrivate={setIsPrivate}/>
