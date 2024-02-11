@@ -1,6 +1,6 @@
 package com.kp.futurecriteria.data
 
-import com.kp.futurecriteria.enumerator.ManagementStatus
+import com.kp.futurecriteria.model.enumerator.ManagementStatus
 import jakarta.persistence.*
 
 @Entity
