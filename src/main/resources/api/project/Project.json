@@ -20,5 +20,23 @@
         "type": "boolean"
       }
     }
+  },
+  "ProjectFilterDto": {
+    "allOf": [
+      {
+        "$ref": "#/ProjectDto"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "startDateFilterType": {
+            "type": "string"
+          },
+          "endDateFilterType": {
+            "type": "string"
+          }
+        }
+      }
+    ]
   }
 }

@@ -93,7 +93,7 @@ components:
     ProjectDto:
       $ref: './api/project/Project.json#/ProjectDto'
     ProjectFilterDto:
-      $ref: './api/project/ProjectFilter.json#/ProjectFilterDto'
+      $ref: './api/project/Project.json#/ProjectFilterDto'
     TaskDto:
       type: object
       properties:
