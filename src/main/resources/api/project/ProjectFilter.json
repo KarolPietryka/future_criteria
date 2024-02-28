@@ -1,0 +1,20 @@
+{
+  "ProjectFilterDto": {
+    "allOf": [
+      {
+        "$ref": "./Project.json#/ProjectDto"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "startDateFilterType": {
+            "type": "string"
+          },
+          "endDateFilterType": {
+            "type": "string"
+          }
+        }
+      }
+    ]
+  }
+}
